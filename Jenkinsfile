@@ -8,7 +8,7 @@ pipeline {
     }
     stage('byte converstion') {
       steps {
-        sh 'python3 byteconvertion.py.py'
+        sh 'python3 byteconvertion.py'
       }
     }
   }
