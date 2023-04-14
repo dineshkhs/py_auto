@@ -15,10 +15,10 @@ wheel_dir = 'wheelhouse'
 
 # Define the Build directory to clone the repositories to
 
-if not os.path.exists("/Build"):
- os.makedirs("/Build")
+#if not os.path.exists("/Build"):
+ #os.makedirs("/Build")
 
-tmp_dir = '/Build'
+#tmp_dir = '/Build'
 
 
 # Define a function to delete the .git folder from a given directory
@@ -27,14 +27,14 @@ tmp_dir = '/Build'
 # Clone each repository to the temporary directory and build the .whl package
 for repo in repos:
     # Construct the clone command with the specified branch/tag
-    clone_cmd = ['git', 'clone', '-b', repo['ref'], repo['url'], os.path.join(tmp_dir, repo['url'].split('/')[-1].split('.')[0])]
+    clone_cmd = ['git', 'clone', '-b', repo['ref'], repo['url'], os.path.join(repo['url'].split('/')[-1].split('.')[0])]
     #clone_cmd = ['git', 'clone', '--depth','1','--branch', repo['commitID'], repo['url'], os.path.join(tmp_dir, repo['url'].split('/')[-1].split('.')[0])]
     
     # Clone the repository
     subprocess.run(clone_cmd, check=True, shell=True)
         
 
-    os.chdir(os.path.join(tmp_dir, repo['url'].split('/')[-1].split('.')[0]))
+    os.chdir(os.path.join(repo['url'].split('/')[-1].split('.')[0]))
    
     # Create a virtual environment
     subprocess.run(['python', '-m', 'venv','--upgrade-deps', '.venv'], check=True)
@@ -57,8 +57,3 @@ for repo in repos:
    # whl_file = os.path.join('.','*.whl')
     shutil.copy(whl_file, os.path.join('..', wheel_dir))
      
-# Clean up the temporary directory
-os.chdir('..')
-#shutil.rmtree(tmp_dir)
-
-
