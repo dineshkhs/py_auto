@@ -2,8 +2,7 @@ import os
 import subprocess
 import shutil
 import glob
-import win32api
-import win32con
+
 
 # Define the repositories and their corresponding branch/tag to build
 repos = [
