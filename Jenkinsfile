@@ -7,7 +7,7 @@ pipeline {
   agent {
         docker { image "python:${PYTHON_VERSION}-alpine${ALPINE_VERSION}"
        }
-    
+  }
   stages {
     stage('version') {
       steps {
