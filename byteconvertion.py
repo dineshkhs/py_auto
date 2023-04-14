@@ -43,7 +43,7 @@ for repo in repos:
     # Activate the virtual environment
     activate_script = os.path.join('.venv', 'bin', 'activate')
 
-    subprocess.rucheck_calln([activate_script, '&&','python', '-m','pip', 'install', 'wheel', 'setuptools', 'versioningit','&&','exit'], check=True, shell=False)
+    subprocess.rucheck_calln([activate_script, '&&','python', '-m','pip', 'install', 'wheel', 'setuptools','&&','exit'], check=True, shell=False)
 
    
     subprocess.check_call([activate_script,'&&','python', '-c', 'from setuptools import setup; setup()','bdist_egg','--exclude-source-files','&&','exit'], shell=False, check=True)
